@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel · Vila da Praia</title>
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/unbounded-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--ink:#111;--sand:#F5EFE3;--sand-2:#ECE3D2;--line:#E2D7C3;--paper:#FFFDF8;--muted:#6E675C;--bt:#FFF2A6;--volei:#CFE4F7;--fute:#E2EDB4;--err:#B3261E;--ok:#2E7D4F;
+  --display:'Unbounded',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+.row2>*,.row3>*,.grid>*{min-width:0}
+body{margin:0;background:var(--sand);color:var(--ink);font:400 15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;margin:0;line-height:1}
+.top{background:var(--ink);color:var(--sand);display:flex;align-items:center;gap:14px;padding:14px clamp(16px,3vw,32px)}
+.top svg{width:38px;height:38px}
+.top b{font:700 13px/1 var(--display);letter-spacing:.04em}
+.top .sp{margin-left:auto;display:flex;gap:10px;align-items:center}
+.top a{color:var(--sand);font-size:14px}
+main{max-width:1160px;margin:0 auto;padding:28px clamp(16px,3vw,32px) 80px}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:999px;background:var(--ink);color:var(--sand);font:500 14px/1 var(--body);white-space:nowrap}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn.light{background:var(--sand);color:var(--ink)}
+.btn.danger{background:transparent;color:var(--err);box-shadow:inset 0 0 0 1.5px var(--err)}
+.btn.sm{padding:8px 12px;font-size:13px}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.banner{border-radius:16px;padding:14px 18px;margin-bottom:20px;background:var(--bt);font-size:14px}
+.banner.err{background:#F7D4D1}
+.tabs{display:flex;gap:8px;margin:6px 0 22px;flex-wrap:wrap}
+.tabs button{all:unset;cursor:pointer;padding:10px 16px;border-radius:999px;background:var(--sand-2);font:500 14px/1 var(--body)}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--sand)}
+.grid{display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:start}
+@media (max-width:920px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--paper);border-radius:24px;padding:22px}
+.panel h2{font-size:20px;margin-bottom:16px}
+.list{display:flex;flex-direction:column}
+.item{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--sand-2)}
+.item:last-child{border-bottom:0}
+.item .d{width:64px;height:64px;border-radius:14px;background:var(--sand-2);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.item .d b{font:700 22px/1 var(--display)}.item .d span{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.item h3{font-size:14px;line-height:1.2}
+.item p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.item .acts{display:flex;gap:6px}
+.past{opacity:.5}
+.tag{display:inline-block;padding:3px 8px;border-radius:999px;background:var(--sand-2);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-right:6px}
+form{display:flex;flex-direction:column;gap:14px}
+label{display:flex;flex-direction:column;gap:6px;font:500 13px/1.2 var(--body)}
+label small{color:var(--muted);font-weight:400}
+input,select,textarea{font:400 15px/1.3 var(--body);color:var(--ink);background:var(--sand);border:1.5px solid var(--line);border-radius:14px;padding:11px 13px;width:100%}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ink)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px}
+@media (max-width:480px){.row3{grid-template-columns:1fr 1fr}.row3>:first-child{grid-column:1/-1}}
+.check{flex-direction:row;align-items:center;gap:10px}
+.check input{width:20px;height:20px}
+.pics{display:flex;gap:8px;flex-wrap:wrap}
+.pics button{all:unset;cursor:pointer;width:64px;height:48px;border-radius:10px;background:center/cover;box-shadow:inset 0 0 0 2px transparent}
+.pics button[aria-pressed=true]{box-shadow:0 0 0 3px var(--ink)}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:var(--sand);padding:12px 18px;border-radius:999px;font-size:14px;transition:.35s;pointer-events:none;z-index:9}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.login{max-width:420px;margin:10vh auto;background:var(--paper);border-radius:28px;padding:34px;text-align:center}
+.login svg{width:110px;height:110px;margin:0 auto 18px;display:block}
+.login h1{font-size:22px;margin-bottom:8px}
+.login p{color:var(--muted);margin:0 0 22px}
+.login form{text-align:left}
+.err-t{color:var(--err);font-size:14px;min-height:20px}
+.empty{color:var(--muted);padding:18px 0}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:14px}
+.week button{all:unset;cursor:pointer;text-align:center;padding:9px 0;border-radius:12px;background:var(--sand-2);font:500 13px/1 var(--body)}
+.week button[aria-pressed=true]{background:var(--ink);color:var(--sand)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"></svg>
+
+<section class="login" id="login">
+  <svg viewBox="50 64 1594 1521" aria-hidden="true"><use href="img/logo.svg#p"/></svg>
+  <h1>Painel da Vila</h1>
+  <p>Eventos, grade de aulas e avisos do site.</p>
+  <form id="loginForm">
+    <label>Senha<input type="password" name="password" autocomplete="current-password" required autofocus></label>
+    <div class="err-t" id="loginErr" role="alert"></div>
+    <button class="btn" type="submit">Entrar</button>
+  </form>
+</section>
+
+<div id="app" hidden>
+  <div class="top">
+    <svg viewBox="308 285 1111 1111" aria-hidden="true"><use href="img/mark.svg#p"/></svg>
+    <b>PAINEL DA VILA</b>
+    <div class="sp"><a href="/" target="_blank" rel="noopener">Ver site</a><button class="btn light sm" id="logout" type="button">Sair</button></div>
+  </div>
+  <main>
+    <div id="banner"></div>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="events">Eventos</button>
+      <button role="tab" aria-selected="false" data-tab="classes">Grade de aulas</button>
+      <button role="tab" aria-selected="false" data-tab="settings">Configurações</button>
+    </div>
+
+    <!-- EVENTS -->
+    <section data-pane="events" class="grid">
+      <div class="panel"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h2 style="margin:0">Eventos</h2>
+        <button class="btn sm ghost" id="evClear" type="button">Apagar exemplos</button></div>
+        <div class="list" id="evList"></div></div>
+      <div class="panel">
+        <h2 id="evFormTitle">Novo evento</h2>
+        <form id="evForm">
+          <input type="hidden" name="id">
+          <label>Título<input name="title" maxlength="90" required placeholder="Torneio de Beach Tennis Duplas"></label>
+          <div class="row3">
+            <label>Data<input type="date" name="date" required></label>
+            <label>Início<input type="time" name="start"></label>
+            <label>Fim<input type="time" name="end"></label>
+          </div>
+          <div class="row2">
+            <label>Categoria<select name="category"><option>Torneio</option><option>Festa</option><option>Aula aberta</option><option>Day use</option><option>Show</option><option>Outro</option></select></label>
+            <label>Modalidade<select name="sport"><option value="">Nenhuma</option><option>Beach Tennis</option><option>Vôlei</option><option>Futevôlei</option></select></label>
+          </div>
+          <label>Descrição <small>até 400 caracteres</small><textarea name="description" maxlength="400" placeholder="Chaves por nível, inscrição pelo WhatsApp."></textarea></label>
+          <div class="row2">
+            <label>Valor <small>opcional</small><input name="price" maxlength="40" placeholder="R$ 80 por dupla"></label>
+            <label>Link de inscrição <small>opcional</small><input name="link" type="url" placeholder="https://..."></label>
+          </div>
+          <label>Foto <small>escolha uma ou cole um link</small>
+            <div class="pics" id="pics"></div>
+            <input name="image" placeholder="img/quadras.webp ou https://..."></label>
+          <label class="check"><input type="checkbox" name="featured"> Destacar no topo da agenda</label>
+          <div class="err-t" id="evErr" role="alert"></div>
+          <div class="actions"><button class="btn" type="submit">Salvar evento</button><button class="btn ghost" type="reset" id="evReset">Limpar</button></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CLASSES -->
+    <section data-pane="classes" class="grid" hidden>
+      <div class="panel"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h2 style="margin:0">Grade semanal</h2>
+        <button class="btn sm ghost" id="clClear" type="button">Apagar exemplos</button></div>
+        <div class="week" id="week"></div>
+        <div class="list" id="clList"></div></div>
+      <div class="panel">
+        <h2 id="clFormTitle">Nova aula</h2>
+        <form id="clForm">
+          <input type="hidden" name="id">
+          <label>Dia da semana<select name="day"><option value="1">Segunda</option><option value="2">Terça</option><option value="3">Quarta</option><option value="4">Quinta</option><option value="5">Sexta</option><option value="6">Sábado</option><option value="0">Domingo</option></select></label>
+          <div class="row2"><label>Início<input type="time" name="start" required></label><label>Fim<input type="time" name="end"></label></div>
+          <div class="row2">
+            <label>Modalidade<select name="sport"><option>Beach Tennis</option><option>Vôlei</option><option>Futevôlei</option></select></label>
+            <label>Nível<select name="level"><option>Iniciante</option><option>Intermediário</option><option>Avançado</option><option>Kids</option><option>Todos</option></select></label>
+          </div>
+          <label>Professor <small>opcional</small><input name="teacher" maxlength="60"></label>
+          <div class="err-t" id="clErr" role="alert"></div>
+          <div class="actions"><button class="btn" type="submit">Salvar aula</button><button class="btn ghost" type="reset" id="clReset">Limpar</button></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section data-pane="settings" hidden>
+      <div class="panel" style="max-width:640px">
+        <h2>Configurações do site</h2>
+        <form id="stForm">
+          <label>Aviso no topo do site <small>deixe vazio para esconder</small><input name="notice" maxlength="140" placeholder="Feriado: abrimos das 8h às 20h"></label>
+          <div class="row2">
+            <label>Nota no Google<input name="rating" type="number" step="0.1" min="0" max="5"></label>
+            <label>Nº de avaliações<input name="reviews" type="number" min="0"></label>
+          </div>
+          <label>WhatsApp <small>com DDI e DDD, só números</small><input name="whatsapp" inputmode="numeric" placeholder="5515998613030"></label>
+          <div class="err-t" id="stErr" role="alert"></div>
+          <div class="actions"><button class="btn" type="submit">Salvar configurações</button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const DAYS=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'], M=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const PICS=['img/quadras.webp','img/complexo.webp','img/futevolei.webp','img/bar-areia.webp','img/coco.webp','img/spritz.webp','img/cerveja.webp'];
+  let token=sessionStorage.getItem('vdp_t')||'', data={events:[],classes:[],settings:{}}, day=1;
+  const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2400)};
+  const today=new Date(Date.now()-3*3600e3).toISOString().slice(0,10);
+
+  async function api(path,opts={}){
+    const r=await fetch(path,{...opts,headers:{'Content-Type':'application/json',...(token?{Authorization:'Bearer '+token}:{})}});
+    const j=await r.json().catch(()=>({}));
+    if(r.status===401&&path!=='/api/login'){logout();throw new Error('Sessão expirada. Entre de novo.')}
+    if(!r.ok) throw new Error(j.error||'Erro inesperado.');
+    return j;
+  }
+  function logout(){token='';sessionStorage.removeItem('vdp_t');$('#app').hidden=true;$('#login').hidden=false}
+  $('#logout').onclick=logout;
+
+  $('#loginForm').onsubmit=async e=>{
+    e.preventDefault();$('#loginErr').textContent='';
+    try{const j=await api('/api/login',{method:'POST',body:JSON.stringify({password:e.target.password.value})});
+      token=j.token;sessionStorage.setItem('vdp_t',token);e.target.reset();await boot()}
+    catch(err){$('#loginErr').textContent=err.message}
+  };
+
+  async function load(){data=await api('/api/data?all=1');}
+  async function boot(){
+    await load();
+    $('#login').hidden=true;$('#app').hidden=false;
+    const b=$('#banner');
+    if(!data.storage) b.innerHTML='<div class="banner err"><b>Banco de dados não conectado.</b> As alterações não serão salvas. Na Vercel, abra o projeto → Storage → conecte o Upstash Redis e faça um novo deploy.</div>';
+    else if(data.sample.events||data.sample.classes) b.innerHTML='<div class="banner">O site está mostrando <b>dados de exemplo</b>. Edite ou apague os exemplos e cadastre os seus. Ao salvar o primeiro item, os exemplos viram itens normais que você pode editar.</div>';
+    else b.innerHTML='';
+    renderEvents();renderClasses();fillSettings();
+  }
+
+  // tabs
+  $$('.tabs button').forEach(t=>t.onclick=()=>{$$('.tabs button').forEach(x=>x.setAttribute('aria-selected',String(x===t)));$$('[data-pane]').forEach(p=>p.hidden=p.dataset.pane!==t.dataset.tab)});
+
+  // ---------- events ----------
+  function renderEvents(){
+    const L=$('#evList'), ev=[...data.events].sort((a,b)=>(a.date+a.start).localeCompare(b.date+b.start));
+    if(!ev.length){L.innerHTML='<div class="empty">Nenhum evento. Crie o primeiro no formulário ao lado.</div>';return}
+    L.innerHTML=ev.map(e=>{const[y,m,d]=e.date.split('-');return `<div class="item ${e.date<today?'past':''}">
+      <div class="d"><b>${d}</b><span>${M[+m-1]}</span></div>
+      <div><h3>${esc(e.title)}</h3><p>${e.featured?'<span class="tag">Destaque</span>':''}<span class="tag">${esc(e.category)}</span>${esc(e.start||'')}${e.end?'–'+esc(e.end):''}${e.date<today?' · já passou':''}</p></div>
+      <div class="acts"><button class="btn sm ghost" data-ed="${esc(e.id)}" type="button">Editar</button><button class="btn sm danger" data-del="${esc(e.id)}" type="button" aria-label="Excluir ${esc(e.title)}">Excluir</button></div></div>`}).join('');
+    $$('[data-ed]',L).forEach(b=>b.onclick=()=>editEvent(data.events.find(x=>x.id===b.dataset.ed)));
+    $$('[data-del]',L).forEach(b=>b.onclick=()=>delItem('events',b.dataset.del));
+  }
+  $('#pics').innerHTML=PICS.map(p=>`<button type="button" data-p="${p}" aria-pressed="false" style="background-image:url('${p}')" aria-label="Usar foto ${p.split('/')[1]}"></button>`).join('');
+  const syncPics=()=>$$('#pics button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.p===$('#evForm').image.value)));
+  $$('#pics button').forEach(b=>b.onclick=()=>{$('#evForm').image.value=b.dataset.p;syncPics()});
+  $('#evForm').image.oninput=syncPics;
+  function editEvent(e){const f=$('#evForm');for(const k of ['id','title','date','start','end','category','sport','description','price','link','image'])f[k].value=e[k]||'';f.featured.checked=!!e.featured;$('#evFormTitle').textContent='Editar evento';syncPics();f.scrollIntoView({behavior:'smooth',block:'start'})}
+  $('#evReset').onclick=()=>{setTimeout(()=>{$('#evForm').id.value='';$('#evFormTitle').textContent='Novo evento';syncPics()})};
+  $('#evForm').onsubmit=async e=>{
+    e.preventDefault();const f=e.target;$('#evErr').textContent='';
+    const item=Object.fromEntries(new FormData(f));item.featured=f.featured.checked;
+    try{await api('/api/admin',{method:'POST',body:JSON.stringify({collection:'events',action:'save',item})});await boot();f.reset();f.id.value='';$('#evFormTitle').textContent='Novo evento';syncPics();toast('Evento salvo. Aparece no site em até 1 minuto.')}
+    catch(err){$('#evErr').textContent=err.message}
+  };
+  $('#evClear').onclick=()=>clearAll('events','Apagar todos os eventos da lista?');
+
+  // ---------- classes ----------
+  $('#week').innerHTML=[1,2,3,4,5,6,0].map(d=>`<button type="button" data-d="${d}" aria-pressed="${d===day}">${DAYS[d].slice(0,3)}</button>`).join('');
+  $$('#week button').forEach(b=>b.onclick=()=>{day=+b.dataset.d;$$('#week button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));$('#clForm').day.value=day;renderClasses()});
+  function renderClasses(){
+    const L=$('#clList'), cl=data.classes.filter(c=>+c.day===day).sort((a,b)=>a.start.localeCompare(b.start));
+    if(!cl.length){L.innerHTML=`<div class="empty">Nenhuma aula na ${DAYS[day].toLowerCase()}.</div>`;return}
+    const col={'Beach Tennis':'var(--bt)','Vôlei':'var(--volei)','Futevôlei':'var(--fute)'};
+    L.innerHTML=cl.map(c=>`<div class="item"><div class="d" style="background:${col[c.sport]}"><b style="font-size:15px">${esc(c.start)}</b><span>${esc(c.end||'')}</span></div>
+      <div><h3>${esc(c.sport)}</h3><p><span class="tag">${esc(c.level)}</span>${esc(c.teacher||'')}</p></div>
+      <div class="acts"><button class="btn sm ghost" data-ed="${esc(c.id)}" type="button">Editar</button><button class="btn sm danger" data-del="${esc(c.id)}" type="button">Excluir</button></div></div>`).join('');
+    $$('[data-ed]',L).forEach(b=>b.onclick=()=>editClass(data.classes.find(x=>x.id===b.dataset.ed)));
+    $$('[data-del]',L).forEach(b=>b.onclick=()=>delItem('classes',b.dataset.del));
+  }
+  function editClass(c){const f=$('#clForm');for(const k of ['id','day','start','end','sport','level','teacher'])f[k].value=c[k]??'';$('#clFormTitle').textContent='Editar aula';f.scrollIntoView({behavior:'smooth',block:'start'})}
+  $('#clReset').onclick=()=>{setTimeout(()=>{$('#clForm').id.value='';$('#clForm').day.value=day;$('#clFormTitle').textContent='Nova aula'})};
+  $('#clForm').onsubmit=async e=>{
+    e.preventDefault();const f=e.target;$('#clErr').textContent='';
+    const item=Object.fromEntries(new FormData(f));
+    try{await api('/api/admin',{method:'POST',body:JSON.stringify({collection:'classes',action:'save',item})});day=+item.day;
+      $$('#week button').forEach(x=>x.setAttribute('aria-pressed',String(+x.dataset.d===day)));await boot();f.reset();f.id.value='';f.day.value=day;$('#clFormTitle').textContent='Nova aula';toast('Aula salva.')}
+    catch(err){$('#clErr').textContent=err.message}
+  };
+  $('#clClear').onclick=()=>clearAll('classes','Apagar toda a grade de aulas?');
+  $('#clForm').day.value=day;
+
+  async function delItem(collection,id){if(!confirm('Excluir este item?'))return;try{await api('/api/admin',{method:'POST',body:JSON.stringify({collection,action:'delete',id})});await boot();toast('Excluído.')}catch(err){toast(err.message)}}
+  async function clearAll(collection,msg){if(!confirm(msg))return;try{await api('/api/admin',{method:'POST',body:JSON.stringify({collection,action:'reset'})});await boot();toast('Lista limpa.')}catch(err){toast(err.message)}}
+
+  // ---------- settings ----------
+  function fillSettings(){const f=$('#stForm'),s=data.settings;f.notice.value=s.notice||'';f.rating.value=s.rating;f.reviews.value=s.reviews;f.whatsapp.value=s.whatsapp}
+  $('#stForm').onsubmit=async e=>{e.preventDefault();$('#stErr').textContent='';
+    try{await api('/api/admin',{method:'POST',body:JSON.stringify({collection:'settings',action:'save',item:Object.fromEntries(new FormData(e.target))})});await boot();toast('Configurações salvas.')}
+    catch(err){$('#stErr').textContent=err.message}};
+
+  if(token) boot().catch(()=>logout());
+})();
+</script>
+</body>
+</html>

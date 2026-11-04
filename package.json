@@ -1,0 +1,9 @@
+{
+  "name": "vila-da-praia-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "VDP_LOCAL=1 node dev-server.js"
+  },
+  "engines": { "node": ">=18" }
+}
